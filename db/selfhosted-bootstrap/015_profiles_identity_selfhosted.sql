@@ -1,0 +1,14 @@
+-- Counterpart to supabase/migrations/20261025090200_profiles_identity_supabase.sql.
+--
+-- Self-hosted Postgres has no auth.users table — that is a Supabase Auth
+-- concept, not a Postgres one. profiles.id stays a bare UUID primary key
+-- (already created by 20261025090100_schema.sql); the link to whichever
+-- auth provider you choose on self-hosted (NextAuth, Lucia, a custom
+-- users table) is enforced at the application layer when a profile row
+-- is created, not by a database foreign key.
+--
+-- No DDL below on purpose — this file exists only so the two migration
+-- sets stay numbered the same way. Run it (it's a no-op) so your
+-- migration tracking table records it, keeping both environments'
+-- history easy to diff.
+select 1;
